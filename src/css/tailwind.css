@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito:ital,wght@0,200;0,800;1,500&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
+}
+
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 52px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.controles{
+    min-height: 300px;
+}
+
+.controles img{
+    margin: 0.5rem;
+}
+
+@media (max-width: 1024px){
+    .controles{
+        width: 100%;
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 767px){
+    .controles{
+        max-width: 300px;
+        min-height: 200px;
+    }
+}
+
+#botonDeLuces:checked + label {
+    background-color: mediumspringgreen;
+}
+
+label .toggle-dot{
+    transition: transform 0.3s ease;
+}
+
+#botonDeLuces:checked + label .toggle-dot{
+    transform: translateX(1.3rem);
+}
+
+.luz{
+    width: 0.4rem;
+    height: 0.4rem;
+    background: rgb(253 230 138);
+    -webkit-box-shadow: 10px 10px 50px 30px rgb(253 230 138);
+    -moz-box-shadow: 10px 10px 50px 30px rgb(253 230 138);
+    box-shadow: 10px 10px 50px 30px rgb(253 230 138);
+}
+
+.luz-1{
+    top: 10%;
+    left: 88%;
+}
+
+.luz-2{
+    top: 10%;
+    left: 67%;
+}
+
+.luz-3{
+    top: 87%;
+    left: 89.5%;
+}
+
+#boton-aspiradora:checked + label {
+    background-color: mediumspringgreen;
+}
+
+label .toggle-dot{
+    transition: transform 0.3s ease;
+}
+
+#boton-aspiradora:checked + label .toggle-dot{
+    transform: translateX(1.3rem);
+}
+.aspiradora-inicio{
+    bottom: 10%;
+    right: 39.5%;
+    width: 5%;
+}
+
+.aspiradora-funcionando{
+    animation: aspiradora-funcionando 15s ease infinite;
+}
+
+@keyframes aspiradora-funcionando{
+    0%{
+        transform: translate(0%) rotate(-720deg);
+    }
+    12% {
+        transform: translateY(-410%);
+    }
+    24%{
+        transform: translateY(-410%) translateX(530%) rotate(-720deg);
+    }
+    36%{
+        transform: translateY(-560%) translateX(-800%) rotate(720deg);
+    }
+    48%{
+        transform: translateY(-510%) translateX(-300%) rotate(-720deg);
+    }
+    60%{
+        transform: translateY(-150%) translateX(-300%) rotate(360deg);
+    }
+    72%{
+        transform: translateY(-150%) translateX(-0%) rotate(-360deg);
+    }
+    100%{
+
+    }
+}
+
+#boton-musica:checked + label {
+    background-color: mediumspringgreen;
+}
+
+label .toggle-dot{
+    transition: transform 0.3s ease;
+}
+
+#boton-musica:checked + label .toggle-dot{
+    transform: translateX(1.3rem);
+}
+
+.sensor {
+    bottom: 55%;
+    left: 0%;
+  }
+  
+.sensor-activado{
+    width: 0.4rem;
+    height: 0.4rem;
+    background: red;
+    -webkit-box-shadow: 10px 10px 50px 30px red;
+       -moz-box-shadow: 10px 10px 50px 30px red;
+            box-shadow: 10px 10px 50px 30px red;
+}
+
+  #boton-alarma:checked + label {
+    background-color: mediumspringgreen;
+}
+
+label .toggle-dot{
+    transition: transform 0.3s ease;
+}
+
+#boton-alarma:checked + label .toggle-dot{
+    transform: translateX(1.3rem);
+}

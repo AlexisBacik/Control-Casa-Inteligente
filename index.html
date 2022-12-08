@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/tailwind.css">
+    <title>Control casa inteligente</title>
+</head>
+<body>
+    <div class="grid bg-layout place-items-center bg-center bg-cover box-border min-h-screen w-full p-8 lg:p-0">
+        <div class="glassmorphism flex flex-col p-8 lg:p-16 box-border max-w-screen-lg w-full lg:w-8/12">
+            <p class="text-base lg:text-xl mt-0 mb-2 text-center">Alexis Bacik</p>
+            <h1 class="text-2xl lg:text-4xl mt-0 text-center font-bold">Control de Casa Inteligente</h1>
+
+            <div class="flex flex-col lg:flex-row gap-5 justify-center w-full mt-8 lg:mt-16 mb-0 lg:my-16">
+                <div class="relative grid place-items-center w-full lg:w-4/6">
+                    <img class="w-full" src="./public/img/7615928a31984e7db4b55cf20f39661a.jpg" alt="">
+                    <div id="luz-1" class="luz-1 absolute rounded-full"></div>
+                    <div id="luz-2" class="luz-2 absolute rounded-full"></div>
+                    <div id="luz-3" class="luz-3 absolute rounded-full"></div>
+                    <img id="aspiradora-inicio" class="aspiradora-inicio absolute" src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/null/external-vacuum-cleaner-automation-technology-flaticons-flat-flat-icons.png"/>
+                    <audio id="audio" src="./public/music/dreams.mp3"></audio>
+                    <div id="sensor" class="sensor absolute rounded-full"></div>
+                </div>
+                <div class="controles grid place-items-center w-full lg:w-2/6 mt-8 lg:mt-0">
+                    <div class="controles grid gap-5 grid-cols-2 md:grid-cols-4 lg:grid-cols-2 grid-rows-2 md:grid-rows1 lg:grid-rows-2 max-w-full w-full">
+                        <div class="glassmorphism relative grid place-items-center box-border w-full h-full cursor-pointer">
+                            <p class="m-1 text-sm">Luces</p>
+                            <img class="w-8 m-2 rotate-180" src="https://img.icons8.com/ios/100/000000/light-on--v1.png" alt="luces">
+                            <input id="botonDeLuces" class="absolute w-full h-full opacity-0" type="checkbox">
+                            <label for="botonDeLuces" class="flex items-center mb-1 bg-gray-400 h-6 w-12 rounded-full">
+                                <div class="toggle-dot bg-white m-1 h-5 w-5 rounded-full"></div>
+                            </label>
+                        </div>
+                        <div class="glassmorphism relative grid place-items-center box-border w-full h-full cursor-pointer">
+                            <p class="m-1 text-sm">Aspiradora</p>
+                            <img class="w-8 m-2" src="https://img.icons8.com/external-phatplus-lineal-phatplus/64/null/external-robot-vacuum-cleaner-ai-for-earth-phatplus-lineal-phatplus.png" alt="luces">
+                            <input id="boton-aspiradora" class="absolute w-full h-full opacity-0" type="checkbox">
+                            <label for="boton-aspiradora" class="flex items-center mb-1 bg-gray-400 h-6 w-12 rounded-full">
+                                <div class="toggle-dot bg-white m-1 h-5 w-5 rounded-full"></div>
+                            </label>
+                        </div>
+                        <div class="glassmorphism relative grid place-items-center box-border w-full h-full cursor-pointer">
+                            <p class="m-1 text-sm">Música</p>
+                            <img class="w-8 m-2" src="https://img.icons8.com/carbon-copy/100/null/music.png" alt="luces">
+                            <input id="boton-musica" class="absolute w-full h-full opacity-0" type="checkbox">
+                            <label for="boton-musica" class="flex items-center mb-1 bg-gray-400 h-6 w-12 rounded-full">
+                                <div class="toggle-dot bg-white m-1 h-5 w-5 rounded-full"></div>
+                            </label>
+                        </div>
+                        <div class="glassmorphism relative grid place-items-center box-border w-full h-full cursor-pointer">
+                            <p class="m-1 text-sm">Alarma</p>
+                            <img class="w-8 m-2" src="https://img.icons8.com/ios/100/null/security-checked.png" alt="luces">
+                            <input id="boton-alarma" class="absolute w-full h-full opacity-0" type="checkbox">
+                            <label for="boton-alarma" class="flex items-center mb-1 bg-gray-400 h-6 w-12 rounded-full">
+                                <div class="toggle-dot bg-white m-1 h-5 w-5 rounded-full"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const botonDeLuces = document.getElementById('botonDeLuces')
+        const botonLuz1 = document.getElementById('luz-1')
+        const botonLuz2 = document.getElementById('luz-2')
+        const botonLuz3 = document.getElementById('luz-3')
+        const botonAspiradora = document.getElementById('boton-aspiradora')
+        const aspiradoraInicio = document.getElementById('aspiradora-inicio')
+        const botonMusica = document.getElementById('boton-musica')
+        const audio = document.getElementById('audio')
+        const audioContext = new AudioContext()
+        const source = audioContext.createMediaElementSource(audio)
+        source.connect(audioContext.destination)
+        const botonAlarma = document.getElementById('boton-alarma')
+        const botonSensor = document.getElementById('sensor')
+
+        function interruptorLuces() {
+            botonDeLuces.addEventListener('change', () => {
+                botonLuz1.classList.toggle('luz')
+                botonLuz2.classList.toggle('luz')
+                botonLuz3.classList.toggle('luz')
+            })
+        }
+
+        interruptorLuces()
+
+        function aspiradora(){
+            botonAspiradora.addEventListener('change', ()=>{
+                aspiradoraInicio.classList.toggle('aspiradora-funcionando')
+            })
+        }
+        aspiradora()
+
+        let paused = true
+        function reproducirMusica(){
+            botonMusica.addEventListener('change', () =>{
+                if(paused){
+                    audio.play()
+                    paused = false
+                }else {
+                    audio.pause()
+                    paused = true
+                      }
+            })
+        }
+        reproducirMusica()
+
+        function activarAlarma(){
+            botonAlarma.addEventListener('change', ()=>{
+                botonSensor.classList.toggle('sensor-activado')
+            })
+        }
+        activarAlarma()
+    </script>
+</body>
+</html>
