@@ -97,11 +97,11 @@
         
         function reproducirMusica(){
                 if(paused){
-                    audio.play()
-                    paused = false
-                }else {
                     audio.pause()
                     paused = true
+                }else {
+                    audio.play()
+                    paused = false
                       }
             }
         reproducirMusica()
