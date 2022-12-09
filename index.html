@@ -71,9 +71,6 @@
         const aspiradoraInicio = document.getElementById('aspiradora-inicio')
         const botonMusica = document.getElementById('boton-musica')
         const audio = document.getElementById('audio')
-        const audioContext = new AudioContext()
-        const source = audioContext.createMediaElementSource(audio)
-        source.connect(audioContext.destination)
         const botonAlarma = document.getElementById('boton-alarma')
         const botonSensor = document.getElementById('sensor')
 
@@ -95,8 +92,10 @@
         aspiradora()
 
         let paused = true
+        
+        botonMusica.addEventListener('change', reproducirMusica)
+        
         function reproducirMusica(){
-            botonMusica.addEventListener('change', () =>{
                 if(paused){
                     audio.play()
                     paused = false
