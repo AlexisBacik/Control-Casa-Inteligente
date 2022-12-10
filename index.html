@@ -91,17 +91,17 @@
         }
         aspiradora()
 
-        let paused = true
+        let reproducir = true
         
         botonMusica.addEventListener('change', reproducirMusica)
         
         function reproducirMusica(){
-                if(paused){
-                    audio.pause()
-                    paused = true
-                }else {
+                if(reproducir){
                     audio.play()
-                    paused = false
+                    reproducir = true
+                }else {
+                    audio.pause()
+                    reproducir = false
                       }
             }
         reproducirMusica()
